@@ -46,7 +46,7 @@ colors
 PROMPT_PREF=$'%{\e[38;5;242m%}%n@%m %{\e[0m%}%~%{\e[0m%}'
 PROMPT_SUF=$'\n%(?.%B%F{cyan}.%B%F{red})%(?!$ !$ )%f%b'
 PROMPT="$PROMPT_PREF$PROMPT_SUF"
-RPROMPT=$'%{\e[38;5;242m%}%D %T%{\e[0m%}'
+RPROMPT=$'%{\e[38;5;242m%}%D %T %(?..%F{red})(%(?!\'-\' !;_; ))%{\e[0m%}%b'
 
 autoload -Uz compinit
 compinit

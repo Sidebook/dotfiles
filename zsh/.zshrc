@@ -80,8 +80,7 @@ function select-history() {
   CURSOR=$#BUFFER
 }
 zle -N select-history
-# bindkey '^R' select-history
-# bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^R' select-history
 
 ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=cyan,underline
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=cyan,underline

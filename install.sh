@@ -4,12 +4,14 @@ BASEDIR=`dirname $0`
 BASEDIR=`(cd "$BASEDIR"; pwd)`
 
 source "${BASEDIR}/zsh/install.sh"
+source "${BASEDIR}/vim/install.sh"
 
 function show_help()
 {
     echo 'Available arguments'
     echo ' - all         : invoke the following commands'
     echo ' - zsh         : setup zsh settings'
+    echo ' - vim         : setup vim settings'
     echo ' - help        : show this help'
 }
 
@@ -18,6 +20,10 @@ function process()
     case "$1" in 
         "zsh" )
             setup_zsh "all"
+            return 0
+            ;;
+        "vim" )
+            setup_vim "all"
             return 0
             ;;
         "all" )

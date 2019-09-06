@@ -110,3 +110,11 @@ if type pyenv >/dev/null 2>&1; then
       eval "$(pyenv init -)"
     fi
 fi
+
+export FZF_DEFAULT_OPTS='
+--color dark,hl:51,hl+:51,fg:249,bg+:238,fg+:254
+--color info:30,prompt:123,spinner:30,pointer:37,marker:235
+'
+
+alias gb='git checkout $(git for-each-ref --format="%(authorname) %09 %(refname:short)" --sort=authorname | sed "/origin/d" | peco | awk "{print \$NF}")'
+

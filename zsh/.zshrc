@@ -116,5 +116,5 @@ export FZF_DEFAULT_OPTS='
 --color info:30,prompt:123,spinner:30,pointer:37,marker:235
 '
 
-alias gb='git checkout $(git for-each-ref --format="%(authorname) %09 %(refname:short)" --sort=authorname | sed "/origin/d" | peco | awk "{print \$NF}")'
+alias gb='git checkout $(git for-each-ref --format="%(authorname) %09 %(refname:short)" --sort=authorname | sed "/origin/d" | fzf | awk "{print \$NF}")'
 

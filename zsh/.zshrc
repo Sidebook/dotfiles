@@ -118,3 +118,4 @@ export FZF_DEFAULT_OPTS='
 
 alias gb='git checkout $(git for-each-ref --format="%(authorname) %09 %(refname:short)" --sort=authorname | sed "/origin/d" | fzf | awk "{print \$NF}")'
 
+[ -f ~/.local.zshrc ] && source ~/.local.zshrc

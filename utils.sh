@@ -1,6 +1,9 @@
 function ask_yes_or_no() {
     while true; do
-        read -p "$1 [y/n]" yn
+        PREF=$'\e[96m'
+        SUF=$'\e[0m [y/n]'
+        PROMPT="$PREF$1$SUF"
+        read -p "$PROMPT" yn
         case $yn in
             [Yy]* ) return 0 ;;
             [Nn]* ) return 1 ;;
@@ -23,4 +26,21 @@ function check_exists_directory()
     else
         return 0
     fi
+}
+
+function copy_file_safe()
+{
+    echo "Copy $SCRIPT_DIR/$1 ---> $2"
+    ABORT=0
+    if [ -f $2 ]; then
+        ask_yes_or_no "$2 already exists. Overwrite?"
+        ABORT=$?
+    fi
+    if [ $ABORT = 0 ]; then
+        rm -f $2
+        cp -i "$SCRIPT_DIR/$1" $2
+    else
+        echo -e $'\e[31mCopy cancelled\e[m'
+    fi
+    return $COPY
 }

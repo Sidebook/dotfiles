@@ -5,15 +5,10 @@ function _setup_zshrc() {
     SCRIPT_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 
     echo "[*] setup .zshrc"
-    if [ -f ~/.zshrc ]; then
-        ask_yes_or_no "~/.zshrc already exists. Overwrite?"
-        if [ $? = 0 ]; then
-            rm -f ~/.zshrc
-        else
-            echo -e $'[x] setup .zshrc: \e[31mCancelled\e[m'
-        fi
-    fi
-    cp "$SCRIPT_DIR/.zshrc" ~/.zshrc
+    copy_file_safe .zshrc ~/.zshrc
+
+    echo "[*] setup .local.zshrc"
+    copy_file_safe .local.zshrc ~/.local.zshrc
 }
 
 function setup_zsh()
